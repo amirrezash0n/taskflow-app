@@ -1,73 +1,49 @@
-# React + TypeScript + Vite
+# TaskFlow - Todo List App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+اپلیکیشن مدیریت تسک با قابلیت دارک/لایت مود و ذخیره‌سازی خودکار
 
-Currently, two official plugins are available:
+![React](https://img.shields.io/badge/React-18.3-61DAFB?logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.6-3178C6?logo=typescript)
+![Tailwind](https://img.shields.io/badge/Tailwind-3.4-06B6D4?logo=tailwindcss)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✨ ویژگی‌ها
 
-## React Compiler
+- اضافه کردن، ویرایش و حذف تسک
+- علامت زدن انجام شده/نشده
+- فیلتر بر اساس وضعیت (همه/انجام شده/انجام نشده)
+- نمایش آمار لحظه‌ای
+- دارک/لایت مود
+- ذخیره خودکار در مرورگر
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ تکنولوژی‌ها
 
-## Expanding the ESLint configuration
+- React 18
+- TypeScript
+- Tailwind CSS
+- Vite
+- Lucide React
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🚀 نصب و اجرا
 
-```js
-export default defineConfig([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📁 ساختار پروژه
 
-```js
-// eslint.config.js
-import reactX from "eslint-plugin-react-x";
-import reactDom from "eslint-plugin-react-dom";
-
-export default defineConfig([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs["recommended-typescript"],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
 ```
+src/
+├── components/     # کامپوننت‌های برنامه
+├── hooks/          # هوک سفارشی useLocalStorage
+├── types/          # تعاریف TypeScript
+└── App.tsx         # کامپوننت اصلی
+```
+
+## 📝 نویسنده
+
+[Amirreza Shourvarzi]
+
+## 📄 مجوز
+
+MIT
