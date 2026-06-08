@@ -30,7 +30,7 @@ export default function TodoInput({ onAdd }: TodoInputProps) {
         />
         <button
           type="submit"
-          className="px-6 py-3 font-semibold text-white bg-gradient-to-r from-blue-500 to-blue-600 
+          className="px-6 py-3 font-semibold text-white bg-linear-to-r from-blue-500 to-blue-600 
                    rounded-xl hover:from-blue-600 hover:to-blue-700 transition-all duration-200 
                    flex items-center gap-2 shadow-md hover:shadow-lg"
         >
