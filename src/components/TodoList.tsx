@@ -1,3 +1,4 @@
+import { ClipboardList } from "lucide-react";
 import type { Todo } from "../types/todo";
 import TodoItem from "./TodoItem";
 
@@ -16,8 +17,13 @@ export default function TodoList({
 }: TodoListProps) {
   if (todos.length === 0) {
     return (
-      <div className="text-center py-6 sm:py-8 text-gray-500 dark:text-gray-400">
-        No tasks found
+      <div className="flex flex-col items-center justify-center py-10 sm:py-12 text-gray-400 dark:text-gray-500">
+        <ClipboardList
+          size={48}
+          className="mb-3 opacity-50"
+          strokeWidth={1.5}
+        />
+        <p className="text-sm sm:text-base">No tasks found</p>
       </div>
     );
   }
