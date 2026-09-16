@@ -1,49 +1,71 @@
-# TaskFlow - Todo List App
+# 📝 Todo List
 
-اپلیکیشن مدیریت تسک با قابلیت دارک/لایت مود و ذخیره‌سازی خودکار
+A minimal, responsive todo app built with React + TypeScript + Tailwind CSS v4.
 
-![React](https://img.shields.io/badge/React-18.3-61DAFB?logo=react)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.6-3178C6?logo=typescript)
-![Tailwind](https://img.shields.io/badge/Tailwind-3.4-06B6D4?logo=tailwindcss)
+🔗 **[Live Demo](https://taskflow-app-puce-two.vercel.app)**
 
-## ✨ ویژگی‌ها
+<p align="center">
+  <img src="./screenshots/mobile.png" width="200" alt="Mobile view" />
+  &nbsp;&nbsp;
+  <img src="./screenshots/desktop.png" width="500" alt="Desktop view" />
+</p>
+<p align="center">
+  <sub>Mobile · Desktop</sub>
+</p>
 
-- اضافه کردن، ویرایش و حذف تسک
-- علامت زدن انجام شده/نشده
-- فیلتر بر اساس وضعیت (همه/انجام شده/انجام نشده)
-- نمایش آمار لحظه‌ای
-- دارک/لایت مود
-- ذخیره خودکار در مرورگر
+## ✨ Features
 
-## 🛠️ تکنولوژی‌ها
+- ➕ Add, edit, and delete tasks
+- ✅ Mark tasks as complete
+- 🔍 Filter by all / pending / completed
+- 🌙 Dark mode with system preference detection
+- 💾 Auto-save to localStorage
+- 📱 Fully responsive (280px+)
+- ♿ Keyboard accessible with focus-visible styles
 
-- React 18
-- TypeScript
-- Tailwind CSS
-- Vite
-- Lucide React
+## 🛠️ Tech Stack
 
-## 🚀 نصب و اجرا
+- **React 19** — UI library
+- **TypeScript** — Type safety
+- **Vite** — Build tool
+- **Tailwind CSS v4** — Styling
+- **Lucide React** — Icons
+
+## 🚀 Getting Started
 
 ```bash
+# Install dependencies
 npm install
+
+# Start dev server
 npm run dev
+
+# Build for production
+npm run build
 ```
 
-## 📁 ساختار پروژه
+## 📁 Project Structure
 
 ```
 src/
-├── components/     # کامپوننت‌های برنامه
-├── hooks/          # هوک سفارشی useLocalStorage
-├── types/          # تعاریف TypeScript
-└── App.tsx         # کامپوننت اصلی
+├── components/     # UI components
+├── constants/      # App-wide constants
+├── hooks/          # Custom React hooks
+├── types/          # TypeScript types
+└── App.tsx
 ```
 
-## 📝 نویسنده
+## 🎯 Design Decisions
 
-[Amirreza Shourvarzi]
+- **Custom hooks** for separation of concerns (`useTodos`, `useFilter`, `useTheme`, `useLocalStorage`)
+- **Co-located types** — component props live with their components, domain types live in `types/`
+- **Centralized constants** — filters, storage keys, and themes in `constants/`
+- **Theme persistence** — respects system preference and remembers user choice
 
-## 📄 مجوز
+## 🌐 Deployment
+
+Deployed on [Vercel](https://vercel.com). Every push to `main` triggers an automatic deployment.
+
+## 📄 License
 
 MIT
