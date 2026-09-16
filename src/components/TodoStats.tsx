@@ -1,32 +1,15 @@
-// src/components/TodoStats.tsx
 import type { Todo } from "../types/todo";
-import { Moon, Sun, CheckCircle2, Circle, ListTodo } from "lucide-react";
-import { useEffect, useState } from "react";
+import { CheckCircle2, Circle, ListTodo } from "lucide-react";
 
 interface TodoStatsProps {
   todos: Todo[];
 }
 
 export default function TodoStats({ todos }: TodoStatsProps) {
-  const [isDark, setIsDark] = useState(() => {
-    return localStorage.getItem("theme") === "dark";
-  });
-
-  useEffect(() => {
-    if (isDark) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  }, [isDark]);
-
   const total = todos.length;
   const completed = todos.filter((t) => t.completed).length;
   const pending = total - completed;
 
-  // کارت‌های آماری
   const stats = [
     {
       label: "Total",
@@ -52,40 +35,26 @@ export default function TodoStats({ todos }: TodoStatsProps) {
 
   return (
     <div className="mb-6">
-      {/* سه کارت آمار */}
-      <div className="grid grid-cols-3 gap-3 mb-4">
+      <div className="grid grid-cols-3 gap-2 sm:gap-3">
         {stats.map((stat) => (
           <div
             key={stat.label}
-            className="bg-white dark:bg-gray-800 rounded-xl p-3 shadow-sm"
+            className="bg-white dark:bg-gray-800 rounded-xl p-2 sm:p-3 shadow-sm"
           >
-            <div className="flex items-center gap-2 mb-1">
-              <div className={`p-1.5 rounded-lg ${stat.color}`}>
-                <stat.icon size={16} />
+            <div className="flex items-center gap-1.5 sm:gap-2 mb-1">
+              <div className={`p-1 sm:p-1.5 rounded-lg ${stat.color}`}>
+                <stat.icon size={14} className="sm:hidden" />
+                <stat.icon size={16} className="hidden sm:block" />
               </div>
-              <span className="text-xs text-gray-500 dark:text-gray-400">
+              <span className="text-[10px] sm:text-xs text-gray-500 dark:text-gray-400 truncate">
                 {stat.label}
               </span>
             </div>
-            <p className="text-2xl font-bold text-gray-800 dark:text-white">
+            <p className="text-lg sm:text-2xl font-bold text-gray-800 dark:text-white">
               {stat.value}
             </p>
           </div>
         ))}
-      </div>
-
-      {/* دکمه دارک مود - جدا از کارت‌ها */}
-      <div className="flex justify-end">
-        <button
-          onClick={() => setIsDark(!isDark)}
-          className="p-2.5 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200"
-        >
-          {isDark ? (
-            <Sun size={20} className="text-yellow-500" />
-          ) : (
-            <Moon size={20} className="text-gray-600" />
-          )}
-        </button>
       </div>
     </div>
   );
