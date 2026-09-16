@@ -31,12 +31,12 @@ export default function TodoItem({
   };
 
   return (
-    <div className="flex items-center gap-2 sm:gap-3 p-2.5 sm:p-3 bg-white dark:bg-gray-800 rounded-lg shadow-sm">
+    <div className="animate-slide-in flex items-center gap-2 sm:gap-3 p-2.5 sm:p-3 bg-white dark:bg-gray-800 rounded-lg shadow-sm">
       <button
         type="button"
         onClick={() => onToggle(todo.id)}
         aria-label={todo.completed ? "Mark as pending" : "Mark as completed"}
-        className={`w-6 h-6 shrink-0 rounded-full border-2 flex items-center justify-center
+        className={`size-6 shrink-0 rounded-full border-2 flex items-center justify-center
                    ${todo.completed ? "bg-green-500 border-green-500" : "border-gray-400"}`}
       >
         {todo.completed && <Check size={16} className="text-white" />}
@@ -56,7 +56,7 @@ export default function TodoItem({
         />
       ) : (
         <span
-          className={`flex-1 min-w-0 text-sm sm:text-base break-words text-gray-800 dark:text-gray-200 ${
+          className={`flex-1 min-w-0 text-sm sm:text-base wrap-break-word text-gray-800 dark:text-gray-200 ${
             todo.completed ? "line-through text-gray-500" : ""
           }`}
         >
@@ -64,14 +64,14 @@ export default function TodoItem({
         </span>
       )}
 
-      <div className="flex gap-1 sm:gap-2 shrink-0">
+      <div className="flex gap-0.5 sm:gap-1 shrink-0">
         {isEditing ? (
           <>
             <button
               type="button"
               onClick={handleSave}
               aria-label="Save"
-              className="p-1 text-green-500 hover:text-green-600"
+              className="p-1.5 sm:p-1 text-green-500 hover:text-green-600 rounded-md hover:bg-green-50 dark:hover:bg-green-900/20 transition-colors"
             >
               <Save size={18} />
             </button>
@@ -79,7 +79,7 @@ export default function TodoItem({
               type="button"
               onClick={handleCancel}
               aria-label="Cancel"
-              className="p-1 text-red-500 hover:text-red-600"
+              className="p-1.5 sm:p-1 text-red-500 hover:text-red-600 rounded-md hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
             >
               <X size={18} />
             </button>
@@ -90,7 +90,7 @@ export default function TodoItem({
               type="button"
               onClick={() => setIsEditing(true)}
               aria-label="Edit"
-              className="p-1 text-blue-500 hover:text-blue-600"
+              className="p-1.5 sm:p-1 text-blue-500 hover:text-blue-600 rounded-md hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors"
             >
               <Edit2 size={18} />
             </button>
@@ -98,7 +98,7 @@ export default function TodoItem({
               type="button"
               onClick={() => onDelete(todo.id)}
               aria-label="Delete"
-              className="p-1 text-red-500 hover:text-red-600"
+              className="p-1.5 sm:p-1 text-red-500 hover:text-red-600 rounded-md hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
             >
               <Trash2 size={18} />
             </button>
