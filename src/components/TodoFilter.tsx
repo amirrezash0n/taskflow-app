@@ -5,18 +5,18 @@ interface TodoFilterProps {
   onFilterChange: (filter: FilterType) => void;
 }
 
+const filters: { value: FilterType; label: string }[] = [
+  { value: "all", label: "All Tasks" },
+  { value: "pending", label: "Pending" },
+  { value: "completed", label: "Completed" },
+];
+
 export default function TodoFilter({
   currentFilter,
   onFilterChange,
 }: TodoFilterProps) {
-  const filters: { value: FilterType; label: string }[] = [
-    { value: "all", label: "All Tasks" },
-    { value: "pending", label: "Pending" },
-    { value: "completed", label: "Completed" },
-  ];
-
   return (
-    <div className="flex gap-2 mb-6 overflow-x-auto pb-1">
+    <div className="flex flex-wrap gap-2 mb-6">
       {filters.map((filter) => (
         <button
           key={filter.value}

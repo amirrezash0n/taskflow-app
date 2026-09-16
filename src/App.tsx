@@ -18,13 +18,21 @@ function App() {
       <div className="container mx-auto max-w-2xl px-4 py-8">
         <div className="flex items-center justify-between mb-8">
           <TodoTitle />
+
           <ThemeToggle isDark={isDark} onToggle={toggleTheme} />
         </div>
+
         <TodoInput onAdd={addTodo} />
+
         <TodoStats todos={todos} />
-        <TodoFilter currentFilter={filter} onFilterChange={setFilter} />
+
+        {todos.length > 0 && (
+          <TodoFilter currentFilter={filter} onFilterChange={setFilter} />
+        )}
+
         <TodoList
           todos={filteredTodos}
+          filter={filter}
           onToggle={toggleTodo}
           onDelete={deleteTodo}
           onEdit={editTodo}
