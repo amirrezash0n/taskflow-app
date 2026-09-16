@@ -1,52 +1,17 @@
-import { useState } from "react";
-import { useLocalStorage } from "./hooks/useLocalStorage";
-import type { Todo, FilterType } from "./types/todo";
+import { useTodos } from "./hooks/useTodos";
+import { useFilter } from "./hooks/useFilter";
+import { useTheme } from "./hooks/useTheme";
 import TodoInput from "./components/TodoInput";
 import TodoList from "./components/TodoList";
 import TodoFilter from "./components/TodoFilter";
 import TodoStats from "./components/TodoStats";
 import TodoTitle from "./components/TodoTitle";
-import { useTheme } from "./hooks/useTheme";
 import ThemeToggle from "./components/ThemeToggle";
 
 function App() {
-  const [todos, setTodos] = useLocalStorage<Todo[]>("todos", []);
-  const [filter, setFilter] = useState<FilterType>("all");
+  const { todos, addTodo, toggleTodo, deleteTodo, editTodo } = useTodos();
+  const { filter, setFilter, filteredTodos } = useFilter(todos);
   const { isDark, toggleTheme } = useTheme();
-
-  const addTodo = (text: string) => {
-    const newTodo: Todo = {
-      id: crypto.randomUUID(),
-      text,
-      completed: false,
-      createdAt: new Date(),
-    };
-    setTodos([...todos, newTodo]);
-  };
-
-  const toggleTodo = (id: string) => {
-    setTodos(
-      todos.map((todo) =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo,
-      ),
-    );
-  };
-
-  const deleteTodo = (id: string) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
-  };
-
-  const editTodo = (id: string, newText: string) => {
-    setTodos(
-      todos.map((todo) => (todo.id === id ? { ...todo, text: newText } : todo)),
-    );
-  };
-
-  const filteredTodos = todos.filter((todo) => {
-    if (filter === "completed") return todo.completed;
-    if (filter === "pending") return !todo.completed;
-    return true;
-  });
 
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
