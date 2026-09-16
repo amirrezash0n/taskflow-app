@@ -1,6 +1,7 @@
 import { ClipboardList } from "lucide-react";
 import type { Todo, FilterType } from "../types/todo";
 import TodoItem from "./TodoItem";
+import { EMPTY_MESSAGES } from "../constants/filters";
 
 interface TodoListProps {
   todos: Todo[];
@@ -9,12 +10,6 @@ interface TodoListProps {
   onDelete: (id: string) => void;
   onEdit: (id: string, newText: string) => void;
 }
-
-const emptyMessages: Record<FilterType, string> = {
-  all: "No tasks yet. Add one above!",
-  completed: "No completed tasks yet.",
-  pending: "No pending tasks. All done! 🎉",
-};
 
 export default function TodoList({
   todos,
@@ -31,7 +26,7 @@ export default function TodoList({
           className="mb-3 opacity-50"
           strokeWidth={1.5}
         />
-        <p className="text-sm sm:text-base">{emptyMessages[filter]}</p>
+        <p className="text-sm sm:text-base">{EMPTY_MESSAGES[filter]}</p>
       </div>
     );
   }

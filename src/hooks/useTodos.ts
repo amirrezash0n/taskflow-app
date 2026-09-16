@@ -1,8 +1,9 @@
 import { useLocalStorage } from "./useLocalStorage";
 import type { Todo, FilterType } from "../types/todo";
+import { STORAGE_KEYS } from "../constants/storage-keys";
 
 export function useTodos() {
-  const [todos, setTodos] = useLocalStorage<Todo[]>("todos", []);
+  const [todos, setTodos] = useLocalStorage<Todo[]>(STORAGE_KEYS.TODOS, []);
 
   const addTodo = (text: string) => {
     const newTodo: Todo = {

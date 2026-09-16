@@ -1,3 +1,4 @@
+import { FILTERS } from "../constants/filters";
 import type { FilterType } from "../types/todo";
 
 interface TodoFilterProps {
@@ -5,19 +6,13 @@ interface TodoFilterProps {
   onFilterChange: (filter: FilterType) => void;
 }
 
-const filters: { value: FilterType; label: string }[] = [
-  { value: "all", label: "All Tasks" },
-  { value: "pending", label: "Pending" },
-  { value: "completed", label: "Completed" },
-];
-
 export default function TodoFilter({
   currentFilter,
   onFilterChange,
 }: TodoFilterProps) {
   return (
     <div className="flex flex-wrap gap-2 mb-6">
-      {filters.map((filter) => (
+      {FILTERS.map((filter) => (
         <button
           key={filter.value}
           type="button"

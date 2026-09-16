@@ -1,30 +1,30 @@
 import { useEffect, useState } from "react";
-
-type Theme = "light" | "dark";
+import { THEMES, type Theme } from "../constants/theme";
+import { STORAGE_KEYS } from "../constants/storage-keys";
 
 export function useTheme() {
   const [theme, setTheme] = useState<Theme>(() => {
-    if (typeof window === "undefined") return "light";
-    const stored = localStorage.getItem("theme");
-    if (stored === "dark" || stored === "light") return stored;
+    if (typeof window === "undefined") return THEMES.LIGHT;
+    const stored = localStorage.getItem(STORAGE_KEYS.THEME);
+    if (stored === THEMES.DARK || stored === THEMES.LIGHT) return stored;
     return window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light";
+      ? THEMES.DARK
+      : THEMES.LIGHT;
   });
 
   useEffect(() => {
     const root = document.documentElement;
-    if (theme === "dark") {
+    if (theme === THEMES.DARK) {
       root.classList.add("dark");
     } else {
       root.classList.remove("dark");
     }
-    localStorage.setItem("theme", theme);
+    localStorage.setItem(STORAGE_KEYS.THEME, theme);
   }, [theme]);
 
   const toggleTheme = () => {
-    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+    setTheme((prev) => (prev === THEMES.DARK ? THEMES.LIGHT : THEMES.DARK));
   };
 
-  return { theme, toggleTheme, isDark: theme === "dark" };
+  return { theme, toggleTheme, isDark: theme === THEMES.DARK };
 }
