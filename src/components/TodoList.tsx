@@ -16,7 +16,7 @@ export default function TodoList({
 }: TodoListProps) {
   if (todos.length === 0) {
     return (
-      <div className="text-center py-8 text-gray-500 dark:text-gray-400">
+      <div className="text-center py-6 sm:py-8 text-gray-500 dark:text-gray-400">
         No tasks found
       </div>
     );
